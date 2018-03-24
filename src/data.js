@@ -20,7 +20,7 @@ const data = {
     {
       type: "link",
       text: "Turducken venison flank salami.",
-      href: "http://ibm.com"
+      href: "http://www.google.com"
     },
 
     {

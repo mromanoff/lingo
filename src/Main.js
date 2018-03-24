@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import data from "./data";
+import lingoCheck from "./check";
 import Lingo from "./Lingo";
 
 // 1. will fetch data.
@@ -14,9 +15,11 @@ export default class Main extends Component {
     };
   }
 
-  componentWillMount() {
+  componenDidMount() {
+    const parsedData = lingoCheck(data);
+
     this.setState({
-      data: data,
+      data: parsedData,
       isLoading: false
     });
   }
@@ -30,7 +33,9 @@ export default class Main extends Component {
       <div>
         <h1>{data.title}</h1>
         <h2>{data.subTitle}</h2>
-        <Lingo data={data} />
+        <Lingo data={data.furtherExplanation} />
+        <hr />
+        <Lingo data={data.stubExplanation} />
       </div>
     );
   }

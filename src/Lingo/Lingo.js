@@ -8,29 +8,8 @@ import NewLine from "./NewLine";
 export default class Lingo extends Component {
   constructor(props) {
     super(props);
-
     this.data = this.props.data;
   }
-
-  componentWillMount() {
-    let keys = this.shouldParse(this.isMeta(this.data));
-    this.lingos = keys.map(item => this.parseData(item));
-  }
-
-  isMeta = data => {
-    if (!data.meta) return;
-    return data.meta;
-  };
-
-  shouldParse = data => {
-    if (Array.isArray(data.smartContent) && !data.smartContent) return;
-    return data.smartContent;
-  };
-
-  parseData = propName => {
-    return this.data[propName];
-  };
-
   getBlockComponent(block) {
     switch (block.type) {
       case "modal":
@@ -50,13 +29,9 @@ export default class Lingo extends Component {
   render() {
     return (
       <div>
-        {this.lingos.map((lingo, index) => (
-          <div key={`lingos-${index}`}>
-            {lingo.map((block, index) => (
-              <div key={`lingo-${index}`}>
-                {this.getBlockComponent(block, index)}
-              </div>
-            ))}
+        {this.data.map((block, index) => (
+          <div key={`lingo-${index}`}>
+            {this.getBlockComponent(block, index)}
           </div>
         ))}
       </div>
