@@ -1,2 +1,0 @@
-# lingo
-Created with CodeSandbox
